@@ -118,8 +118,7 @@ public class JGitClient
     public static void main( String[] args )
     {
     	try{
-    		JGitClient gitClient = new JGitClient("/home/oracle/workspace/JGitClient","sarath_dontireddy","sarath_dontireddy");
-    	
+    		JGitClient gitClient = new JGitClient("/home/oracle/workspace/JGitClient","spaceageracer","spaceageblog@1123");
     		gitClient.addFile("*.java");
     		System.out.println(gitClient.getStatus());
     }catch(Exception e){
