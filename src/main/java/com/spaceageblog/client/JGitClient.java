@@ -10,7 +10,7 @@ import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 /**
  * @author spaceageracer
  * @description Java Git client
- *
+ *  A Simple Java Git client , try to access the local repository given the localRepositoryPath and credentials
  */
 public class JGitClient 
 {
@@ -18,7 +18,7 @@ public class JGitClient
 	private Git localGit;
 	private String localRepositoryPath;
 	private UsernamePasswordCredentialsProvider credentialsProvider;
-	/**
+	/**cd
 	 * 
 	 * @param localRepositoryPath : Local Git repository directory
 	 * @param user  
@@ -110,8 +110,6 @@ public class JGitClient
 	 * @throws Exception
 	 */
 	public void commitAndPush(String message) throws Exception {
-	
-		
 	    localGit.commit().setMessage(message).call();
 	    localGit.push().setCredentialsProvider(this.credentialsProvider).call();
 	}
