@@ -5,6 +5,11 @@ import java.io.File;
 import org.eclipse.jgit.api.CheckoutCommand;
 import org.eclipse.jgit.api.CreateBranchCommand.SetupUpstreamMode;
 import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.errors.CheckoutConflictException;
+import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.api.errors.InvalidRefNameException;
+import org.eclipse.jgit.api.errors.RefAlreadyExistsException;
+import org.eclipse.jgit.api.errors.RefNotFoundException;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 /**
@@ -37,7 +42,8 @@ public class JGitClient
 	 * @param branch
 	 * @throws Exception
 	 */
-	private  void switchBranch(String branch) throws Exception {
+	public boolean switchBranch(String branch) throws Exception  {
+		
 		if(!isInitialized())
 			initialize();
 		
@@ -45,9 +51,17 @@ public class JGitClient
 		checkoutCommand.setCreateBranch(true);
 		checkoutCommand.setName(branch); 
 		checkoutCommand.setUpstreamMode(SetupUpstreamMode.SET_UPSTREAM);
-		//checkoutCommand.setStartPoint("origin/"+branch).call();
-		checkoutCommand.call();
-		System.out.println("Switched to Branch");
+		
+		try {
+			checkoutCommand.call();
+			return true;
+		} catch (RefAlreadyExistsException| RefNotFoundException | InvalidRefNameException e) {
+			throw e;
+		} catch (CheckoutConflictException e) {
+			throw e;
+		} catch (GitAPIException e) {
+			throw e;
+		}
 	}
 	
 	
