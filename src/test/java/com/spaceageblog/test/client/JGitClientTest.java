@@ -6,6 +6,7 @@ package com.spaceageblog.test.client;
 import static org.junit.Assert.*;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,6 +25,7 @@ public class JGitClientTest {
 	public void setUp() throws Exception {
 
 		try {
+			
 			 gitClient = new JGitClient("/home/oracle/workspace/JGitClient", "spaceageracer",
 					"spaceageblog@1123");
 			gitClient.addFile("*.java");
@@ -36,7 +38,7 @@ public class JGitClientTest {
 	public void tearDown() throws Exception {
 
 		try {
-			 gitClient =null;
+			gitClient =null;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -57,8 +59,10 @@ public class JGitClientTest {
 	
 	@Test(expected = Exception.class)
 	public void checkDuplicatBranchNameNotAllowed() throws Exception {
-		gitClient.switchBranch("Test_Local_Branch");
+	
 		assertTrue(gitClient.switchBranch("Test_Local_Branch"));
+		
+		gitClient.switchBranch("Test_Local_Branch");
 		
 		gitClient.switchBranch("Test_Local_Branch");
 		

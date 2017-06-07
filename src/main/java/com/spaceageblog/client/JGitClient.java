@@ -133,7 +133,7 @@ public class JGitClient
     {
     	try{
     		JGitClient gitClient = new JGitClient("/home/oracle/workspace/JGitClient","spaceageracer","spaceageblog@1123");
-    		gitClient.addFile("*.java");
+    		gitClient.addFile(".");
     		System.out.println(gitClient.getStatus());
     }catch(Exception e){
     	e.printStackTrace();	
