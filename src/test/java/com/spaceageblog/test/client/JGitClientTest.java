@@ -24,7 +24,7 @@ public class JGitClientTest {
 	public void setUp() throws Exception {
 
 		try {
-			 gitClient = new JGitClient("/home/oracle/workspace/JGitClient", "spaceageracer",
+			 gitClient = new JGitClient("/home/oracle/workspace/jgit", "spaceageracer",
 					"spaceageblog@1123");
 			gitClient.addFile("*.java");
 		} catch (Exception e) {
@@ -36,7 +36,9 @@ public class JGitClientTest {
 	public void tearDown() throws Exception {
 
 		try {
+			gitClient.switchBranch("master");
 			 gitClient =null;
+			 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -60,7 +62,7 @@ public class JGitClientTest {
 		gitClient.switchBranch("Test_Local_Branch");
 		assertTrue(gitClient.switchBranch("Test_Local_Branch"));
 		
-		gitClient.switchBranch("Test_Local_Branch");
+		
 		
 	}
 }
