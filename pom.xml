@@ -4,7 +4,7 @@
   <artifactId>com.spaceageblog.JGitClient</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>JGitClient</name>
-  <description>Java Git Client adding by gowthami</description>
+  <description>Java Git Client 4th </description>
   <repositories>
     <repository>
       <id>jgit-repository</id>
